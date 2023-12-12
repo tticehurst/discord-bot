@@ -2,13 +2,15 @@ import { SlashCommandBuilder } from "discord.js";
 import logger from "../logger";
 
 /**
- * A template for slash commands
+ *
+ * @description A template for slash commands
  *
  * @param filename The filename of the command (__filename)
  * @param description The description of the command
  *
  * @public filename
  * @public description
+ *
  */
 export default class SlashTemplate {
   public name: string;

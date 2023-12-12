@@ -1,5 +1,4 @@
-import { EmbedBuilder } from "discord.js";
-import SlashTemplate from "./slashTemplate";
+import { CommandInteraction, EmbedBuilder } from "discord.js";
 
 /**
  *
@@ -9,12 +8,20 @@ import SlashTemplate from "./slashTemplate";
  *
  */
 export default class EmbedTemplate extends EmbedBuilder {
-  constructor(command: SlashTemplate) {
+  constructor(interaction: CommandInteraction) {
     super();
 
     super.setColor("#00ff00");
-    super.setFooter({ text: `${command.name} | ${command.description}` });
-    super.setAuthor({ name: "shnopy319" });
+    super.setFooter({
+      text: `${interaction.commandName} | ${interaction.command!.description}`
+    });
+    super.setAuthor({
+      name: "shnopy319",
+      iconURL: interaction.user.displayAvatarURL({
+        size: 64,
+        forceStatic: true
+      })
+    });
     super.setTimestamp(Date.now());
   }
 }

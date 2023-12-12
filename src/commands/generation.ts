@@ -3,13 +3,11 @@ import SlashTemplate from "@imports/templates/slashTemplate";
 import getJSON from "@imports/webJSON";
 import { APIEmbedField, CommandInteraction } from "discord.js";
 
-const template = new SlashTemplate(
-  __filename,
-  "Shows the current UK power generation mix"
-);
-
 export default {
-  data: template.builder(),
+  data: new SlashTemplate(
+    __filename,
+    "Shows the current UK power generation mix"
+  ).builder(),
 
   async run(interaction: CommandInteraction) {
     const data = await getJSON("https://api.carbonintensity.org.uk/generation");
@@ -23,7 +21,7 @@ export default {
       });
     });
 
-    const embed = new EmbedTemplate(template);
+    const embed = new EmbedTemplate(interaction);
     embed.addFields(fields);
 
     await interaction.reply({ embeds: [embed] });
