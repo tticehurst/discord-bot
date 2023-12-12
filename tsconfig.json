@@ -22,6 +22,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "baseUrl": "./src",
-    "paths": { "@imports/*": ["imports/*"] }
+    "paths": {
+      "!imports/*": ["./imports/*"]
+    }
   }
 }

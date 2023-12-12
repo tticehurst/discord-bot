@@ -2,12 +2,11 @@
   "name": "discord-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.ts",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node . | pino-pretty -i pid,hostname -t \"HH:MM dd/mm/yyyy\"",
-    "dev-rs": "nodemon --watch \"src/**\" --ext \"ts,d.ts\" --ignore \"*.json\" --exec \"npx ts-node src/index.ts\" | pino-pretty -i pid,hostname -t \"HH:MM dd/mm/yyyy\"",
-    "build": "tsc"
+    "start": "npm run build;node . | pino-pretty -i pid,hostname -t \"HH:MM dd/mm/yyyy\"",
+    "build": "tsc --build tsconfig.json && tsc-alias"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +20,9 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.8",
     "typescript": "^5.3.3"
   }
 }
