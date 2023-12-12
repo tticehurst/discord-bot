@@ -16,7 +16,7 @@ export default class EmbedTemplate extends EmbedBuilder {
       text: `${interaction.commandName} | ${
         interaction.client.commands.get(interaction.commandName).data
           .description
-      } • <t:${Date.now()}:f>`
+      }`
     });
     super.setAuthor({
       name: interaction.user.username,
@@ -25,5 +25,7 @@ export default class EmbedTemplate extends EmbedBuilder {
         forceStatic: true
       })
     });
+
+    super.setTimestamp(Date.now());
   }
 }
