@@ -6,19 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build;node . | pino-pretty -i pid,hostname -t \"HH:MM dd/mm/yyyy\"",
-    "build": "tsc --build tsconfig.json && tsc-alias"
+    "build": "tsc --build tsconfig.json && tsc-alias",
+    "prebuild": "npm run clean",
+    "clean": "rimraf build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bent": "^7.3.12",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
-    "node-fetch": "^3.3.2",
     "pino": "^8.16.2",
     "pino-pretty": "^10.2.3"
   },
   "devDependencies": {
+    "@types/bent": "^7.3.8",
     "@types/node": "^20.10.4",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
