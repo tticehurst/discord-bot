@@ -23,9 +23,8 @@
     "noUnusedParameters": true,
     "baseUrl": "./src",
     "paths": {
-      "!imports/*": ["./imports/*"],
-      "!types/*": ["./types/*"],
-      "!commands/*": ["./commands/*"]
+      "@imports/*": ["./imports/*"],
+      "@types/*": ["./types/*"]
     }
   }
 }

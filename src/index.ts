@@ -9,9 +9,9 @@ import { config } from "dotenv";
 import { readdirSync } from "fs";
 import { join } from "path";
 
-import filterTsJs from "!imports/filterTsJs";
-import logger from "!imports/logger";
-import { commands, events } from "!imports/paths";
+import filterTsJs from "@imports/filterTsJs";
+import logger from "@imports/logger";
+import { commands, events } from "@imports/paths";
 
 config();
 
@@ -39,6 +39,8 @@ commandFiles.forEach((fileName) => {
   if (command.data && command.run) {
     client.commands.set(command.data.name, command);
     commandsAsJSON.push(command.data.toJSON());
+
+    logger.info(`Loaded command ${fileName}`);
   } else {
     logger.warn(
       `Command ${fileName} is missing either a data or execute property`
@@ -61,5 +63,4 @@ client.login(process.env.TOKEN!).then(async () => {
   });
 
   logger.info("Logged in");
-  logger.info(`Loaded: ${commandFiles.map((f) => f.split(".")[0]).join(", ")}`);
 });

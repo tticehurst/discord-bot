@@ -5,10 +5,12 @@
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build;node . | pino-pretty -i pid,hostname -t \"HH:MM dd/mm/yyyy\"",
+    "start_": "node . | pino-pretty -i pid,hostname -t \"HH:MM dd/mm/yyyy\"",
+    "prestart_": "npm run build",
     "build": "tsc --build tsconfig.json && tsc-alias",
     "prebuild": "npm run clean",
-    "clean": "rimraf build"
+    "clean": "rimraf build",
+    "start": "npm run start_"
   },
   "keywords": [],
   "author": "",
