@@ -5,6 +5,7 @@ export default {
   name: Events.InteractionCreate,
   async run(interaction: Interaction) {
     if (!interaction.isChatInputCommand()) return;
+    if (!interaction.isCommand()) return;
 
     const command = interaction.client.commands.get(interaction.commandName);
 

@@ -4,7 +4,7 @@ import { CommandInteraction, EmbedBuilder } from "discord.js";
  *
  * @description A template for creating embeds
  * @extends EmbedBuilder
- * @param command The slash command template
+ * @param interaction The command interaction
  *
  */
 export default class EmbedTemplate extends EmbedBuilder {
@@ -13,15 +13,17 @@ export default class EmbedTemplate extends EmbedBuilder {
 
     super.setColor("#00ff00");
     super.setFooter({
-      text: `${interaction.commandName} | ${interaction.command!.description}`
+      text: `${interaction.commandName} | ${
+        interaction.client.commands.get(interaction.commandName).data
+          .description
+      } • <t:${Date.now()}:f>`
     });
     super.setAuthor({
-      name: "shnopy319",
+      name: interaction.user.username,
       iconURL: interaction.user.displayAvatarURL({
         size: 64,
         forceStatic: true
       })
     });
-    super.setTimestamp(Date.now());
   }
 }
